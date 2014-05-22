@@ -10,6 +10,6 @@ You can highlight multiple paragraphs as well.
 
 It is just a quick implementation -- I'm sure much could be improved on, but it works for now.
 
-![Before](images/screenshot-unwraped.png)
+![Before](images/screenshot-unwrapped.png)
 ![During](images/screenshot-showrap.png)
 ![After](images/screenshot-wrapped.png)
