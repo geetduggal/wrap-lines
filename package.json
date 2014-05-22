@@ -2,9 +2,9 @@
   "name": "wrap-lines",
   "main": "./lib/wrap-lines",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "Wrap lines similar to Vim's 'gq'",
   "activationEvents": ["wrap-lines:wrap", "wrap-lines:unwrap"],
-  "repository": "https://github.com/atom/wrap-lines",
+  "repository": "https://github.com/geetduggal/wrap-lines",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
