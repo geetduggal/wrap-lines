@@ -1,14 +1,16 @@
 {
   "name": "wrap-lines",
   "main": "./lib/wrap-lines",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Wrap lines similar to Vim's 'gq'",
-  "activationEvents": ["wrap-lines:wrap", "wrap-lines:unwrap"],
+  "activationEvents": [
+    "wrap-lines:wrap",
+    "wrap-lines:unwrap"
+  ],
   "repository": "https://github.com/geetduggal/wrap-lines",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
