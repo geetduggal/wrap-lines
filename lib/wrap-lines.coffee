@@ -1,3 +1,4 @@
+{$$, Point, Range} = require 'atom'
 module.exports =
     activate: ->
         atom.workspaceView.command "wrap-lines:wrap", => @wrap()
@@ -11,9 +12,31 @@ module.exports =
         if stext.length > 0
             paras = (para.split(/\s+/) for para in stext.split(/\n\n+/))
         else
-            paras = [editor.lineForBufferRow(editor.getCursorScreenRow()).split(/\s+/)]
-            editor.selectLine()
+            # paras = [editor.lineForBufferRow(editor.getCursorScreenRow()).split(/\s+/)]
+            # editor.selectLine()
+            # selection = editor.getSelection()
+            start = editor.getCursorBufferPosition()
+            {row, column} = start
+            scanRange = [[row-1, column], [0,0]]
+            paraBegin = new Point(0, 0)
+            zero = new Point(0,0)
+            editor.backwardsScanInBufferRange /\n\n+/, scanRange, ({range, stop}) =>
+                paraBegin = range.end
+                stop()
+
+            scanRange = [start, editor.getEofBufferPosition()]
+
+            {row, column} = editor.getEofBufferPosition()
+            paraEnd = new Point(row, column - 1)
+
+            editor.scanInBufferRange /\n\n+/, scanRange, ({range, stop}) =>
+                paraEnd = range.start
+                stop()
+
+            editor.setSelectedBufferRange([paraBegin,paraEnd])
             selection = editor.getSelection()
+            paras = [selection.getText().split(/\s+/)]
+
 
         wrapped = ""
         for words in paras
@@ -27,7 +50,7 @@ module.exports =
                 charcount += n
             wrapped += "\n\n"
 
-        selection.insertText(wrapped.substring(0,wrapped.length-1))
+        selection.insertText(wrapped.substring(0,wrapped.length-2))
 
     unwrap: ->
         editor = atom.workspace.activePaneItem
