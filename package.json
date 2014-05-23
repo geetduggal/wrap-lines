@@ -1,7 +1,7 @@
 {
   "name": "wrap-lines",
   "main": "./lib/wrap-lines",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Wrap lines similar to Vim's 'gq'",
   "activationEvents": [
     "wrap-lines:wrap",
