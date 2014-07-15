@@ -1,5 +1,8 @@
 {$$, Point, Range} = require 'atom'
 module.exports =
+    configDefaults:
+        lineLength: 78
+
     activate: ->
         atom.workspaceView.command "wrap-lines:wrap", => @wrap()
         atom.workspaceView.command "wrap-lines:unwrap", => @unwrap()
@@ -8,6 +11,7 @@ module.exports =
         editor = atom.workspace.activePaneItem
         selection = editor.getSelection()
         stext = selection.getText()
+        lineLength = atom.config.get("wrap-lines.lineLength")
 
         if stext.length > 0
             paras = (para.split(/\s+/) for para in stext.split(/\n\n+/))
@@ -17,7 +21,7 @@ module.exports =
             # selection = editor.getSelection()
             start = editor.getCursorBufferPosition()
             {row, column} = start
-            scanRange = [[row-1, column], [0,0]]
+            scanRange = [[row, column], [0,0]]
             paraBegin = new Point(0, 0)
             zero = new Point(0,0)
             editor.backwardsScanInBufferRange /\n\n+/, scanRange, ({range, stop}) =>
@@ -43,7 +47,7 @@ module.exports =
             charcount = 0
             for w in words
                 n = w.length + 1
-                if charcount + n >= 78
+                if charcount + n >= lineLength
                     wrapped += "\n"
                     charcount = 0
                 wrapped += w + " "
