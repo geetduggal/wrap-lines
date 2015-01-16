@@ -7,6 +7,6 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
-'.workspace':
+'.atom-workspace':
   'cmd-;': 'wrap-lines:wrap'
   'cmd-\'': 'wrap-lines:unwrap'
