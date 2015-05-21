@@ -3,10 +3,12 @@
   "main": "./lib/wrap-lines",
   "version": "0.2.0",
   "description": "Wrap lines similar to Vim's 'gq'",
-  "activationEvents": [
-    "wrap-lines:wrap",
-    "wrap-lines:unwrap"
-  ],
+  "activationCommands": {
+    "atom-text-editor": [
+      "wrap-lines:wrap",
+      "wrap-lines:unwrap"
+    ],
+  },
   "repository": "https://github.com/geetduggal/wrap-lines",
   "license": "MIT",
   "engines": {
