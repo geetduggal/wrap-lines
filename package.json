@@ -7,7 +7,7 @@
     "atom-text-editor": [
       "wrap-lines:wrap",
       "wrap-lines:unwrap"
-    ],
+    ]
   },
   "repository": "https://github.com/geetduggal/wrap-lines",
   "license": "MIT",
