@@ -1,4 +1,4 @@
-{$$, Point, Range} = require 'atom'
+{Point, Range} = require 'atom'
 module.exports =
     configDefaults:
         lineLength: 78
