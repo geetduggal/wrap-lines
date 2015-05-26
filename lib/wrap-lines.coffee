@@ -1,4 +1,4 @@
-{$$, Point, Range} = require 'atom'
+{Point, Range} = require 'atom'
 module.exports =
     config:
         lineLength:
@@ -6,8 +6,8 @@ module.exports =
             default: 78
 
     activate: ->
-        atom.workspaceView.command "wrap-lines:wrap", => @wrap()
-        atom.workspaceView.command "wrap-lines:unwrap", => @unwrap()
+        atom.commands.add 'atom-workspace', "wrap-lines:wrap", => @wrap()
+        atom.commands.add 'atom-workspace', "wrap-lines:unwrap", => @unwrap()
 
     wrap: ->
         editor = atom.workspace.activePaneItem
