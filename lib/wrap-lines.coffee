@@ -11,7 +11,7 @@ module.exports =
 
     wrap: ->
         editor = atom.workspace.activePaneItem
-        selection = editor.getSelection()
+        selection = editor.getLastSelection()
         stext = selection.getText()
         lineLength = atom.config.get("wrap-lines.lineLength")
 
@@ -20,7 +20,7 @@ module.exports =
         else
             # paras = [editor.lineForBufferRow(editor.getCursorScreenRow()).split(/\s+/)]
             # editor.selectLine()
-            # selection = editor.getSelection()
+            # selection = editor.getLastSelection()
             start = editor.getCursorBufferPosition()
             {row, column} = start
             scanRange = [[row, column], [0,0]]
@@ -40,7 +40,7 @@ module.exports =
                 stop()
 
             editor.setSelectedBufferRange([paraBegin,paraEnd])
-            selection = editor.getSelection()
+            selection = editor.getLastSelection()
             paras = [selection.getText().split(/\s+/)]
 
 
@@ -60,7 +60,7 @@ module.exports =
 
     unwrap: ->
         editor = atom.workspace.activePaneItem
-        selection = editor.getSelection()
+        selection = editor.getLastSelection()
         stext = selection.getText()
         # TODO: find better dummy string than "-0-" for a paragraph split
         selection.insertText(stext.replace(/\n\n+/g, "-0-").replace(/\n/g, " ").replace(/-0-/g, "\n\n")+"\n")
