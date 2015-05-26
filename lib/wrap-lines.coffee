@@ -1,7 +1,9 @@
 {$$, Point, Range} = require 'atom'
 module.exports =
-    configDefaults:
-        lineLength: 78
+    config:
+        lineLength:
+            type: 'integer'
+            default: 78
 
     activate: ->
         atom.workspaceView.command "wrap-lines:wrap", => @wrap()
